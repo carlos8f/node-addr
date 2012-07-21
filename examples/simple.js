@@ -1,7 +1,7 @@
 var addr = require('../')
   , http = require('http')
   , port = 3000
-  , proxies = ['127.0.0.1', '1.2.3.4']
+  , proxies = ['127.0.0.1']
   ;
 
 http.createServer(function(req, res) {

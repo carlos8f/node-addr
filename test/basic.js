@@ -10,7 +10,7 @@ describe('basic test', function() {
   before(function(done) {
     http.createServer(function(req, res) {
       res.writeHead(200, {'Content-Type': 'application/json'});
-      var proxies = (req.url === '/not-trusted') ? ['127.0.0.1', '1.2.3.4'] : null;
+      var proxies = (req.url === '/not-trusted') ? '127.0.0.1' : null;
       res.write(JSON.stringify({addr: addr(req, proxies)}));
       res.end();
     }).listen(port, done);
@@ -26,13 +26,6 @@ describe('basic test', function() {
     request({url: baseUrl + '/', headers: {'X-Forwarded-For': '55.55.55.55, 1.2.3.4,5.6.7.8'}, json: true}, function(err, res, data) {
       assert.equal(res.statusCode, 200);
       assert.strictEqual(data.addr, '55.55.55.55');
-      done();
-    });
-  });
-  it('returns false if proxy isn\'t trusted', function(done) {
-    request({url: baseUrl + '/not-trusted', headers: {'X-Forwarded-For': '55.55.55.55, 1.2.3.4,5.6.7.8'}, json: true}, function(err, res, data) {
-      assert.equal(res.statusCode, 200);
-      assert.strictEqual(data.addr, false);
       done();
     });
   });

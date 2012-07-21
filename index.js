@@ -7,17 +7,9 @@ module.exports = function addr(req, proxies) {
     proxies = [proxies];
   }
   if (proxies && proxies.indexOf(req.connection.remoteAddress) === -1) {
-    return false;
+    // Don't honor the x-forwarded-for header if request is not from a trusted
+    // source.
+    return req.connection.remoteAddress;
   }
-  var addrs = req.headers['x-forwarded-for'].split(/\s?,\s?/);
-  var ip = addrs.shift();
-  if (proxies) {
-    var proxy;
-    while (proxy = addrs.pop()) {
-      if (proxies.indexOf(proxy) === -1) {
-        return false;
-      }
-    }
-  }
-  return ip;
+  return req.headers['x-forwarded-for'].split(/\s?,\s?/).shift();
 };

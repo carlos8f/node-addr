@@ -14,7 +14,8 @@ $ npm install addr
 
 - `req`: an `http.ServerRequest` object.
 - `proxes`: an array of IP addresses of trusted proxies. If specified and
-  the request doesn't come from one of these addresses, `false` will be returned.
+  the request doesn't come from one of these addresses, the `X-Forwarded-For`
+  header will not be honored.
 - Returns: Remote IP address of the request, taken from the `X-Forwarded-For`
   header if it exists and the request is coming from a trusted proxy.
 
@@ -25,7 +26,7 @@ Example
 var addr = require('addr')
   , http = require('http')
   , port = 3000
-  , proxies = ['127.0.0.1', '1.2.3.4']
+  , proxies = ['127.0.0.1']
   ;
 
 http.createServer(function(req, res) {
