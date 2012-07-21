@@ -10,9 +10,10 @@ module.exports = function addr(req, proxies) {
     return false;
   }
   var addrs = req.headers['x-forwarded-for'].split(/\s?,\s?/);
-  var ip = addrs.shift(), proxy;
+  var ip = addrs.shift();
   if (proxies) {
-    while (proxy = address.pop()) {
+    var proxy;
+    while (proxy = addrs.pop()) {
       if (proxies.indexOf(proxy) === -1) {
         return false;
       }
