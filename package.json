@@ -1,0 +1,27 @@
+{
+  "name": "addr",
+  "version": "0.0.0",
+  "description": "Get the remote address of a request, with reverse-proxy support",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/carlos8f/node-addr.git"
+  },
+  "keywords": [
+    "ip",
+    "address",
+    "reverse-proxy",
+    "x-forwarded-for"
+  ],
+  "author": "Carlos Rodriguez <carlos@s8f.org> (http://s8f.org/)",
+  "license": "MIT",
+  "devDependencies": {
+    "mocha": "*"
+  },
+  "dependencies": {
+    "request": "~2.9.203"
+  }
+}
