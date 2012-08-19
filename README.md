@@ -3,6 +3,8 @@ addr
 
 Get the remote address of a request, with reverse-proxy support
 
+[![build status](https://secure.travis-ci.org/carlos8f/node-addr.png)](http://travis-ci.org/carlos8f/node-addr)
+
 Usage
 =====
 
