@@ -15,7 +15,7 @@ $ npm install addr
 `addr(req, [proxies])`
 
 - `req`: an `http.ServerRequest` object.
-- `proxes`: an array of IP addresses of trusted proxies. If specified and
+- `proxies`: an array of IP addresses of trusted proxies. If specified and
   the request doesn't come from one of these addresses, the `X-Forwarded-For`
   header will not be honored.
 - Returns: Remote IP address of the request, taken from the `X-Forwarded-For`
